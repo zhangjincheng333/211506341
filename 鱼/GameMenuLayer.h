@@ -1,7 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 USING_NS_CC;
-
+/*”Œœ∑≤Àµ•≤„*/
 class GameMenuLayer :
 	public CCLayer
 {
