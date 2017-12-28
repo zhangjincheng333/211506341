@@ -7,34 +7,40 @@
 #include "TouchLayer.h"
 #include "Fish.h"
 #include "PanelLayer.h"
-#include "FishJoyData.h"
+#include "FishingJoyData.h"
 
 USING_NS_CC;
-/*游戏场景类*/
+
+typedef enum{
+	k_Operate_Pause = 0,
+	k_Operate_Resume
+}OperateFlag;
+
 class GameScene :
 	public CCScene
 {
 public:
 	GameScene(void);
 	CREATE_FUNC(GameScene)
-	/*初始化函数，完成各个层的创建和加载*/
 	virtual bool init();
 	virtual ~GameScene();
 	void cannonAimAt(CCPoint target);
 	void cannonShootTo(CCPoint target);
+
+	void scheduleTimeUp();
+
 protected:
-	/*数据成员*/
-	BackgroundLayer* _backgroundLayer;/*背景层*/
-	FishLayer* _fishLayer;/*鱼层*/
-	MenuLayer* _menuLayer;/*菜单层*/
-	CannonLayer* _cannonLayer;/*炮台层*/
-	TouchLayer* _touchLayer;/*触摸层*/
-	PanelLayer* _paneLayer;/*功能层*/
-	void preloadResources(void);
+	BackgroundLayer* _backgroundLayer;
+	FishLayer* _fishLayer;
+	MenuLayer* _menuLayer;
+	CannonLayer* _cannonLayer;
+	TouchLayer* _touchLayer;
+	PanelLayer* _panelLayer;
+	void preloadResources();
 	bool checkOutCollisionBetweenFishesAndBullet(Bullet* bullet);
 	void checkOutCollision();
 	virtual void update(float delta);
 	void fishWillBeCaught(Fish* fish);
+	void alterGold(int delta);
 	void checkOutCollisionBetweenFishesAndFishingNet(Bullet* bulet);
 };
-
