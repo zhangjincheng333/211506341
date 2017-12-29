@@ -35,7 +35,7 @@ bool GoldCounterLayer::init(int number)
         }
         Counter* counter = Counter::create(array);
 		addChild(counter,0,i);
-        counter->setPosition(i * digitSize,0);
+        counter->setPosition(i * digitSize,200);
     }
     setNumber(number);
     return true;
